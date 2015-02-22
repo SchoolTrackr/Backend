@@ -70,10 +70,10 @@ exports.verify = function(req, res, next) {
                 req.user = user;
                 return next()
             } else {
-                res.send(401, "You're request didn't contain a valid token, please re-authenticate")
+                res.send(401, {error: 'Authentication', message: "You're request didn't contain a valid token, please re-authenticate"})
             }
         })
     } else {
-        res.send(401, "You don't appear to have a valid token, please ensure you are authenticated")
+        res.send(401, {error: 'Authentication', message: "You don't appear to have a valid token, please ensure you are authenticated"})
     }
 };
