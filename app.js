@@ -55,6 +55,13 @@ mongoose.connect(databaseURL);
 server.get('/', function(req, res, next) {
     res.send(200, 'Hello!')
 });
+server.get('/api', function(req, res, next) {
+    var response = {
+        name: server.name,
+        version: server.version
+    };
+    res.send(200, response)
+});
 
 // Fix Options requests per https://github.com/mcavage/node-restify/issues/284
 function unknownMethodHandler(req, res) {
