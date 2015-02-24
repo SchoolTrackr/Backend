@@ -2,7 +2,7 @@ var moment = require('moment');
 var User = require('../models/user.js');
 var jwt  = require('jwt-simple');
 
-var secret = process.env.Secret;
+var secret = process.env.SECRET;
 
 var exports = module.exports = {};
 
