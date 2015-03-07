@@ -25,10 +25,15 @@ server.use(restify.throttle({
     rate: 75,
     ip: true
 }));
+server.use(function crossOrigin(req,res,next){
+        res.header("Access-Control-Allow-Origin", "*");
+        res.header("Access-Control-Allow-Headers", "X-Requested-With");
+        return next();
+});
 server.use(function(req, res, next) {
     if (req.url === '/api/auth/authenticate') {
         return next()
-    } else if (req.url === '/') {
+    } else if (req.url === '/api') {
         return next()
     } else {
         authLib.verify(req, res, next)
