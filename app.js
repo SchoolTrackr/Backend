@@ -90,5 +90,6 @@ server.on('MethodNotAllowed', unknownMethodHandler);
 require('./routes/tardies.js')(server);
 require('./routes/students.js')(server);
 require('./routes/users.js')(server);
+require('./routes/people.js')(server);
 require('./routes/notifications.js')(server);
 require('./routes/auth.js')(server);
