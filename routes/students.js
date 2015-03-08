@@ -19,8 +19,9 @@ upgradeAllStudents = function() {
                 grade: elem.grade,
                 role: 6,
                 tardies: elem.tardies
-            })
-        })
+            });
+            person.save()
+        });
         console.log('All done! Logging Person database')
         Person.find().exec(function(err, people) {
             console.log(people)
