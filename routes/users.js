@@ -1,40 +1,4 @@
 var User = require('../models/user.js');
-var Person = require('../models/person.js');
-
-upgradeAllUsers = function() {
-    var query = User.find();
-    var allUsers = [];
-    console.log('Preparing upgrade...');
-    query.exec(function(err, users) {
-        console.log('Successfully ran query');
-        if (err) console.log(err);
-        allUsers = users;
-        allUsers.forEach(function(elem, index, array) {
-            console.log('Upgrading User: '+elem._id);
-            var role = 4;
-            if (elem.role == 'admin') {
-                role = 2
-            } else {
-                role = 4
-            }
-            person = new Person({
-                _id: elem._id,
-                name: {
-                    first: elem.name.first,
-                    last: elem.name.last
-                },
-                email: elem.email,
-                role: role,
-                password: elem.password
-            });
-            person.save(function(err, success) {
-                if (err) console.log(err); else console.log('Finished upgrading user')
-            })
-        });
-        console.log('All done!');
-    })
-};
-upgradeAllUsers();
 
 //function makeUser() {
 //    user = new User({
