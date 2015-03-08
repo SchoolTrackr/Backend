@@ -1,6 +1,23 @@
 var Student = require('../models/student.js');
+var Person = require('../models/person.js');
 
-// Legacy code to update ALL student profiles at once
+upgradeAllStudents = function() {
+    var query = Student.find();
+    var allStudents = [];
+    console.log('Preparing upgrade...');
+    query.exec(function(err, students) {
+        console.log('Successfully ran query');
+        console.log(students);
+        if (err) console.log(err);
+        allStudents = students;
+        allStudents.forEach(function(elem, index, array) {
+            console.log(elem)
+        })
+    })
+};
+upgradeAllStudents();
+
+//Legacy code to update ALL student profiles at once
 //updateAllStudents = function() {
 //    var query = Student.find();
 //    var allStudents = [];

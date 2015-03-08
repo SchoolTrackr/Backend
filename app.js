@@ -49,7 +49,9 @@ if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD){
     process.env.OPENSHIFT_APP_NAME;
 }
 
-mongoose.connect(databaseURL);
+mongoose.connect(databaseURL, function(err) {
+    if (err) console.log('Error connecting to MongoDB: ' + err); else console.log('Successfully connected to MongoDB')
+});
 
 
 
