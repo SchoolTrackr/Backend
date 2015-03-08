@@ -32,13 +32,13 @@ function createStudent(req, res, next) {
 }
 
 function readOneStudent(req, res, next) {
-    Student.populate('tardies').findById(req.params.id, function(err, student){
+    Student.findOne({_id: req.params.id}).populate('tardies').exec(function(err, student) {
         if (err) {
-            res.status(503, err)
+            res.send(500, err)
         } else {
-            res.send(student)
+            res.send(200, student)
         }
-    })
+    });
 }
 
 function readAllStudents(req, res, next) {
