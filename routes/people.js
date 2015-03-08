@@ -49,6 +49,7 @@ function readAllPeople(req, res, next) {
         }
     }
     if (req.query.email) query.where({email: req.query.email});
+    if (req.query.role) query.where({role: req.query.role});
     if (req.query.limit) {
         query.limit(req.query.limit)
     } else {
