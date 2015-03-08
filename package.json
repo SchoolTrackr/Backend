@@ -22,6 +22,7 @@
     "moment": "^2.9.0",
     "mongoose": "^3.8.23",
     "newrelic": "^1.16.2",
+    "password-generator": "^0.2.3",
     "restify": "^2.8.5"
   }
 }

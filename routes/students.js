@@ -1,5 +1,6 @@
 var Student = require('../models/student.js');
 var Person = require('../models/person.js');
+var passgen = require('password-generator');
 
 upgradeAllStudents = function() {
     var query = Student.find();
@@ -11,6 +12,7 @@ upgradeAllStudents = function() {
         allStudents = students;
         allStudents.forEach(function(elem, index, array) {
             console.log('Upgrading Student: '+elem._id);
+            var password = passgen();
             person = new Person({
                 name: {
                     first: elem.name.first,
@@ -18,7 +20,8 @@ upgradeAllStudents = function() {
                 },
                 grade: elem.grade,
                 role: 6,
-                tardies: elem.tardies
+                tardies: elem.tardies,
+                password: password
             });
             person.save()
         });
