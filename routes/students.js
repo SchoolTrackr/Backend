@@ -32,7 +32,7 @@ function createStudent(req, res, next) {
 }
 
 function readOneStudent(req, res, next) {
-    Student.findOne({_id: req.params.id}).populate('tardies').exec(function(err, student) {
+    Student.findOne({_id: req.params.id}).populate('tardies', 'tardies.sweeper', 'tardies.teacher').exec(function(err, student) {
         if (err) {
             res.send(500, err)
         } else {
