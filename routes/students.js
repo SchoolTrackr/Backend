@@ -1,35 +1,4 @@
 var Student = require('../models/student.js');
-var Person = require('../models/person.js');
-var passgen = require('password-generator');
-
-upgradeAllStudents = function() {
-    var query = Student.find();
-    var allStudents = [];
-    console.log('Preparing upgrade...');
-    query.exec(function(err, students) {
-        console.log('Successfully ran query');
-        if (err) console.log(err);
-        allStudents = students;
-        allStudents.forEach(function(elem, index, array) {
-            console.log('Upgrading Student: '+elem._id);
-            var password = passgen();
-            person = new Person({
-                _id: elem._id,
-                name: {
-                    first: elem.name.first,
-                    last: elem.name.last
-                },
-                grade: elem.grade,
-                role: 6,
-                tardies: elem.tardies,
-                password: password
-            });
-            person.save()
-        });
-        console.log('All done!');
-    })
-};
-upgradeAllStudents();
 
 //Legacy code to update ALL student profiles at once
 //updateAllStudents = function() {

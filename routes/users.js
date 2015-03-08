@@ -1,4 +1,41 @@
 var User = require('../models/user.js');
+var Person = require('../models/person.js');
+
+upgradeAllUsers = function() {
+    var query = Student.find();
+    var allStudents = [];
+    console.log('Preparing upgrade...');
+    query.exec(function(err, students) {
+        console.log('Successfully ran query');
+        if (err) console.log(err);
+        allStudents = students;
+        allStudents.forEach(function(elem, index, array) {
+            console.log('Upgrading Student: '+elem._id);
+            var password = passgen();
+            var role = 4;
+            if (elem.role == 'admin') {
+                role = 2
+            } else {
+                role = 4
+            }
+            person = new Person({
+                _id: elem._id,
+                name: {
+                    first: elem.name.first,
+                    last: elem.name.last
+                },
+                email: elem.email,
+                role: role,
+                password: elem.password
+            });
+            person.save(function(err, success) {
+                if (err) console.log(err); else console.log('Finished upgrading user')
+            })
+        });
+        console.log('All done!');
+    })
+};
+upgradeAllUsers();
 
 //function makeUser() {
 //    user = new User({
