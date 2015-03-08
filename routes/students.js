@@ -11,7 +11,7 @@ upgradeAllStudents = function() {
         allStudents = students;
         allStudents.forEach(function(elem, index, array) {
             console.log('Upgrading Student: '+elem._id);
-            person = newPerson({
+            person = new Person({
                 name: {
                     first: elem.name.first,
                     last: elem.name.last
