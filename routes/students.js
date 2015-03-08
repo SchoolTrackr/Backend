@@ -21,6 +21,10 @@ upgradeAllStudents = function() {
                 tardies: elem.tardies
             })
         })
+        console.log('All done! Logging Person database')
+        Person.find().exec(function(err, people) {
+            console.log(people)
+        })
     })
 };
 upgradeAllStudents();
