@@ -14,6 +14,7 @@ upgradeAllStudents = function() {
             console.log('Upgrading Student: '+elem._id);
             var password = passgen();
             person = new Person({
+                _id: elem._id,
                 name: {
                     first: elem.name.first,
                     last: elem.name.last
@@ -25,10 +26,7 @@ upgradeAllStudents = function() {
             });
             person.save()
         });
-        console.log('All done! Logging Person database')
-        Person.find().exec(function(err, people) {
-            console.log(people)
-        })
+        console.log('All done!');
     })
 };
 upgradeAllStudents();
