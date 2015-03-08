@@ -29,7 +29,11 @@ personSchema.pre('save', function(next, done) {
 personSchema
     .virtual('name.full')
     .get(function() {
-        return this.name.first+' '+this.name.middle+' '+this.name.last;
+        if (this.name.middle) {
+            return this.name.first+' '+this.name.middle+' '+this.name.last;
+        } else {
+            return this.name.first+' '+this.name.last;
+        }
     });
 
 
