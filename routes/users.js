@@ -2,16 +2,15 @@ var User = require('../models/user.js');
 var Person = require('../models/person.js');
 
 upgradeAllUsers = function() {
-    var query = Student.find();
-    var allStudents = [];
+    var query = User.find();
+    var allUsers = [];
     console.log('Preparing upgrade...');
-    query.exec(function(err, students) {
+    query.exec(function(err, users) {
         console.log('Successfully ran query');
         if (err) console.log(err);
-        allStudents = students;
-        allStudents.forEach(function(elem, index, array) {
-            console.log('Upgrading Student: '+elem._id);
-            var password = passgen();
+        allUsers = users;
+        allUsers.forEach(function(elem, index, array) {
+            console.log('Upgrading User: '+elem._id);
             var role = 4;
             if (elem.role == 'admin') {
                 role = 2
