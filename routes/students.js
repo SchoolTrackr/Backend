@@ -7,11 +7,19 @@ upgradeAllStudents = function() {
     console.log('Preparing upgrade...');
     query.exec(function(err, students) {
         console.log('Successfully ran query');
-        console.log(students);
         if (err) console.log(err);
         allStudents = students;
         allStudents.forEach(function(elem, index, array) {
-            console.log(elem)
+            console.log('Upgrading Student: '+elem._id);
+            person = newPerson({
+                name: {
+                    first: elem.name.first,
+                    last: elem.name.last
+                },
+                grade: elem.grade,
+                role: 6,
+                tardies: elem.tardies
+            })
         })
     })
 };
